@@ -123,3 +123,33 @@ a {
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
+.card:nth-child(5) { /* Location card */
+  --color: 45 100% 50%; /* Yellowish glow */
+}
+
+.card:nth-child(6) { /* Website card */
+  --color: 300 80% 60%; /* Purple glow */
+}
+
+.card:nth-child(5)::before,
+.card:nth-child(6)::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: radial-gradient(
+    500px circle at var(--mouse-x) var(--mouse-y),
+    hsl(var(--color) / 0.35),
+    transparent 40%
+  );
+  border-radius: inherit;
+  opacity: 0;
+  z-index: 2;
+}
+
+#cards:hover > .card:nth-child(5)::before,
+#cards:hover > .card:nth-child(6)::before {
+  opacity: 1;
+}
